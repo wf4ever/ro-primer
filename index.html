@@ -115,7 +115,7 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 
 <section id="introduction"><h2>Introduction</h2>
 
-<p>Research Objects are semantically rich aggregations of resources that bring together data, methods and people in scientific investigations [[BECHHOFER11]]. Their goal is to create a class of artifacts that can encapsulate our digital knowledge and provide a mechanism for sharing and discovering assets of reusable research and scientific knowledge. 
+<p>Research Objects are semantically rich aggregations of resources that bring together data, methods and people in scientific investigations [[BECHHOFER11]]. Their goal is to create a class of artifacts that can encapsulate digital knowledge and provide a mechanism for sharing and discovering assets of reusable research and scientific knowledge. 
 </p>
 
 <p>In the Wf4Ever project the focus is on those Research Objets whose methods are implemented as scientific workflows. A (workflow-centric) research object (RO) is an artifact that bundles one or several workflows, the provenance of the results obtained by their enactment, other digital objects that are relevant for the experiment (papers, datasets, etc.), and annotations that semantically describe all these objects. A model that can be used to describe workflow-centric research objects is hence proposed in Wf4Ever [[RO-MODEL]]. This model is implemented as a suite of lightweight ontologies or vocabularies, building upon existing work from related communities.</p>
@@ -147,7 +147,7 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 
 <p>This section provides an overview of the RO Model. It does not cover all the details of the model. The RO Model Specification provides precise definitions to be used.</p>
 
-<p>Generally speaking he Wf4Ever RO model can describe the following three aspects of information:</p>
+<p>Generally speaking the Wf4Ever RO model can describe the following three aspects of information:</p>
 <ul>
 <li>Basic aggregation structure of an RO</li>
 <li>Workflow Centric Research Objects</li>
@@ -193,7 +193,7 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 
 </section><!-- annotation --></section><!-- overview --><section id="examples"><h3>Example use of RO</h3>
 
-<p>The Wf4Ever RO model is implemented as a suite of three ontolgoies, which include:</p>
+<p>The Wf4Ever RO model is implemented as a suite of three ontologoies, which include:</p>
 
 <p><b>The ro ontology</b>: which provides basic structure for the description of  aggregated resources and the annotations that are made on those  resources.</p>
 
@@ -289,7 +289,7 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 
 
 </section><!-- ann-ro --><section id="ann-wf"><h4>Annotate a workflow</h4>
-<p>Annotations are useful for typing and describing the resources that form a research object. And these annotations to a component of an RO, such as a workflow in this case, can be either globally true, i.e. remaining true independent of any specific RO, or locally true, i.e. within the context of a particular RO. Here we give two examples to show how both cases can be expressed.</p>
+<p>Annotations are useful for typing and describing the resources that form a research object. And these annotations to a component of an RO, for example workflow in this case, can be either globally true, i.e. remaining true independent of any specific RO, or locally true, i.e. within the context of a particular RO. Here we give two examples to show how both cases can be expressed.</p>
 
 <div id="anno-wf-1">
 <pre class="code-java">
@@ -322,7 +322,7 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 
 <p>This example will both establish that &lt;helloworld.t2flow&gt; actually is typed as a <tt>workflow</tt> (that was asserted by Stian), and give it a general description about the workflow. This information could for instance come from where originally the workflow was retrieved, such as the social workflow sharing web site <a href="http://myexperiment.org">myExperiment</a>, or the workflow definition itself.</p>
 
-<p>A second annotation gives the description of the workflow with respect to this HelloWorld research object - by annotating the workflow proxy instead of &lt;helloworld.t2flow&gt;. In OAI-ORE a <tt>Proxy</tt> allows users to make statemetns about an aggregated resource in the context of a particular aggegation (such as ro:ResearchObject). By adopting this construct it is possible to say, for instance, why the workflow exists within this research object - this annotation would not necessarily apply to the workflow aggregated in a different research object, although it may be retrieved anyway.</p>
+<p>A second annotation gives the description of the workflow with respect to this HelloWorld research object - by annotating the workflow proxy instead of &lt;helloworld.t2flow&gt;. In OAI-ORE a <tt>Proxy</tt> allows users to make statements about an aggregated resource in the context of a particular aggegation (such as ro:ResearchObject). By adopting this construct it is possible to say, for instance, why the workflow exists within this research object - this annotation would not necessarily apply to the workflow aggregated in a different research object, although it may be retrieved anyway.</p>
 
 <div id="anno-wf-3">
 <pre class="code-java">
@@ -356,7 +356,7 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 <p><em>Note: It would be valid, but not required, to also include :ann3 ao:annotatesResource <workflow.t2flow> as the annotation body here is still "somewhat about" <workflow.t2flow>, even though that URI does not appear directly within the graph. </em></p>
 
 </section><!-- ann-wf --><section id="ann-other"><h4>Annotate other types of components of an RO</h4>
-<p>Resources of an RO can also be annotated with relationships between them, by having an <tt>ro:Annotation</tt> with multiple <tt>ao:annotatesResource</tt> and relate them within a single annotation body. The wfprov ontology for instance will allow you to describe that a particular artifact was the output of a workflow run, which used a particular artifact as input.</p>
+<p>Relationships between the resources that constitute an RO are encoded using annotations, by having an <tt>ro:Annotation</tt> with multiple <tt>ao:annotatesResource</tt> and relate them within a single annotation body. The wfprov ontology for instance will allow you to describe that a particular artifact was the output of a workflow run, which used a particular artifact as input.</p>
 
 <div id="anno-other">
 <pre class="code-java">
@@ -442,7 +442,7 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
                 rdf:type                    wfprov:ProcessRun ;
                 wfprov:usedInput            &lt;input&gt;;
                 wfprov:wasPartOfWorkflowRun &lt;workflowrun-workflow&gt; ;
-                wfprov: describedByProcess  &lt;templProcess&gt;.
+                wfprov:describedByProcess  &lt;templProcess&gt;.
                 
 &lt;templProcess&gt; a wfdesc:Process;
                   wfdesc:hasInput &lt;i1&gt;;
