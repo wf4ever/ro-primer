@@ -132,17 +132,6 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 
 <p>The scope of this document is mainly that of developers interested in understanding how to use ontologies/vocabularies to describe research objects  in order to build tool support for their management; and experimental data publishers with sufficient knowledge about Semantic Web technologies to publish their research resources as an aggregation object and describe them in a machine-understandable, structured format, using the Resource Description Framework (RDF). In  this primer document the RDF Turtle syntax is used throughout. The normative specification of the research object ontologies and vocabularies can be found in [[RO-MODEL]].</p>
 
-
-<p>The following namespaces are used in this document:<p>
-<pre>
-@prefix ro:     http://purl.org/wf4ever/ro#
-@prefix wfdesc: http://purl.org/wf4ever/wfdesc#
-@prefix wfprov: http://purl.org/wf4ever/wfprov#
-@prefix dct:    http://purl.org/dc/terms/
-@prefix ore:    http://www.openarchives.org/ore/
-@prefix ao:     http://purl.org/ao/
-@base           http://purl.org/wf4ever/ro-primer#
-</pre>
 </section><!-- introduction -->
 
 <section id="sec:overview"><h2>Overview of the RO Model</h2>
@@ -167,7 +156,7 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 
 <p><img src="diagrams/ResearchObject.png" imagetext="ResearchObject.png|border=1,width=600" width="600" style="border: 1px solid black"></p>
 
-<p>The description of a RO, such as its structure and annotations, is provided in a manifest file. This manifest file can be aggregated as part of this RO. Exmaples of descring a basic RO in a manifest file can be found in Section @@TODO.</p>
+<p>The description of a RO, such as its structure and annotations, is provided in a manifest file. This manifest file can be aggregated as part of this RO. Examples of descring a basic RO in a manifest file can be found in Section @@TODO.</p>
 
 </section><!-- basic -->
 
@@ -177,7 +166,7 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 
 <p>A workflow is often executed following a template which describes each step involved in the whole execution. Templates can be  designed by scientists (users) with the purpose of being able to  execute the same workflow many times with different inputs for their  tests, as "live-tutorials" of how some data infrastructure can be more efficiently used, etc. There are two types of templates: abstract workflow templates have some of the steps of the workflow not bound to a specific tool, while concrete workflow templates  have all the steps specified. In the RO model, we are able to describe  these templates plus their relationships with the executions with the  <a href="http://purl.org/wf4ever/wfdesc#">wfdesc vocabulary</a>.</p>
 
-<p>As well as workflow templates, workflow research objects contain information about workflow runs, which are obtained by enacting workflow templates, and provenance of the results produced as a result. Examples of describing a workflow research object can be found in Section @@TODO.</p>
+<p>As well as workflow templates, workflow research objects contain information about workflow runs, which are obtained by enacting workflow templates, and provenance of the results obtained from the runs. Examples of describing a workflow research object can be found in Section @@TODO.</p>
 
 </section><!-- wf -->
 
@@ -207,6 +196,17 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 
 <p>The following sections show how this suite of RO ontologies can be used to describe a basic workflow-centric RO. A &quot;Hello World&quot; workflow RO is used as the running example to demonstrate how each part of the RO model can be used to describe this RO, its components and annotations to the RO as a whole and to each of its component.</p>
 
+<p>The following namespaces are used in the examples:<p>
+<pre>
+@prefix ro:     http://purl.org/wf4ever/ro#
+@prefix wfdesc: http://purl.org/wf4ever/wfdesc#
+@prefix wfprov: http://purl.org/wf4ever/wfprov#
+@prefix dct:    http://purl.org/dc/terms/
+@prefix ore:    http://www.openarchives.org/ore/
+@prefix ao:     http://purl.org/ao/
+@base           http://purl.org/wf4ever/ro-primer#
+</pre>
+
 <section id="ex-basic"><h3>A basic Research Object</h3>
 
 <p>The &quot;Hello World&quot; example RO, as shown in the following example RDF, aggregates a collection of resources, including the simple <a href="http://www.myexperiment.org/workflows/2648.html)">Hello World workflow template</a>,  its intermediate and final data results resulting from the run of this workflow, as well as annotations to this RO and its components.</p>
@@ -231,7 +231,7 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 
 <div id="wf-example">
 <pre class="code-java">
-<> a ro:WorkflowResearchObject ;    
+<> a <b>ro:WorkflowResearchObject</b> ;    
     ore:aggregates &lt;helloworld.t2flow&gt; ;
     ore:aggregates &lt;artifact/hello&gt; ;
     ore:aggregates &lt;artifact/world&gt; ;
@@ -239,16 +239,16 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
     dct:created "2011-12-02T15:01:10Z"^^xsd:dateTime ;
     dct:creator [ a foaf:Person; foaf:name "Stian Soiland-Reyes" ] .
     
-&lt;helloworld.t2flow&gt;    rdf:type   wfdesc:Workflow .
-&lt;artifact/hello&gt;       rdf:type   wfprov:Artifact .
-&lt;artifact/world&gt;       rdf:type   wfprov:Artifact .
+&lt;helloworld.t2flow&gt;    rdf:type   <b>wfdesc:Workflow</b> .
+&lt;artifact/hello&gt;       rdf:type   <b>wfprov:Artifact</b> .
+&lt;artifact/world&gt;       rdf:type   <b>wfprov:Artifact</b> .
 </pre>
 </div>
 
 </section><!-- ex-wf --><section id="ex-ann"><h3>Provide Annotations to an RO</h3>
 <p>Structured annotations can be added to research objects, aggregated resources, or components of those resources. Annotations are declared as separate RDF resources, which should independently be aggregated as well. The Wf4Ever RO model uses <a href="http://code.google.com/p/annotation-ontology/wiki/v2Main">Annotation Ontology 2.0</a> for describing the link between these RDF resources (the annotation body) and the resources they annotate (annotated resource), also providing an anchor point for describing who made the annotation and when.</p>
 
-<p>Multiple annotation bodies (<tt>ao:body</tt>) can annotate the same resource (<tt>ao:annotatesResource</tt>), and a single annotation (<tt>ao:Annotation</tt>) can annotate multiple resources. Each annotation should have a <a href="http://purl.org/dc/terms/creator"><tt>dct:creator</tt></a> and <a href="http://purl.org/dc/terms/createdAt"><tt>dct:createdAt</tt></a> to specify who created the annotation when. Details about how to use the Annotation Ontology should refer to the above link.</p>
+<p>Multiple annotation bodies (<tt>ao:body</tt>) can annotate the same resource (<tt>ao:annotatesResource</tt>), and a single annotation (<tt>ao:Annotation</tt>) can annotate multiple resources. Each annotation should have a <a href="http://purl.org/dc/terms/creator"><tt>dct:creator</tt></a> and <a href="http://purl.org/dc/terms/createdAt"><tt>dct:createdAt</tt></a> to specify who created the annotation when. Details about how to use the Annotation Ontology can be found in the above link.</p>
 
 <section id="ann-ro"><h4>Annotate an RO as a whole</h4>
 
@@ -263,12 +263,12 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 @prefix dct: &lt;http://purl.org/dc/terms/&gt; .
 
 <>  a ro:ResearchObject, ore:Aggregation ;
-    ore:aggregates      &lt;helloworld.t2flow&gt;, &lt;stiansComments.ttl&gt;, :ann1  ;
+    ore:aggregates      &lt;helloworld.t2flow&gt;, &lt;stiansComments.ttl&gt;, <b>:ann1</b>  ;
     ore:isDescribedBy   &lt;manifest> .
     
 :ann1 a ro:Annotation, ao:GraphAnnotation ; 
-      ao:annotatesResource <> ; # The RO
-      ao:body              &lt;stiansComments.ttl&gt; ;
+      <b>ao:annotatesResource <> ; # The RO
+      ao:body              &lt;stiansComments.ttl&gt; ;</b>
       dct:creator          _:stian ;
       dct:createdAt        "2011-07-14T15:02:14Z"^^xsd:dateTime .
     
@@ -277,7 +277,7 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 </pre>
 </div>
 
-<p>The actual annotation body is stored in a separate resource, and can be made accessible via a URL like <tt>http://www.example.com/ro1/stiansComments.ttl</tt>.</p>
+<p>The actual annotation body is stored in a separate resource, and can be made accessible via a URL.</p>
 
 <div id="anno-ro-2">
 <pre class="code-java">
@@ -297,12 +297,12 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 <pre class="code-java">
 # http://www.example.com/ro1/manifest
 <> a ro:ResearchObject, ore:Aggregation ;
-    ore:aggregates     &lt;helloworld.t2flow&gt;, &lt;workflowMetadata.ttl&gt;, :ann2  ;
+    ore:aggregates     &lt;helloworld.t2flow&gt;, &lt;workflowMetadata.ttl&gt;, <b>:ann2</b>  ;
     ore:isDescribedBy  &lt;manifest&gt; .
     
 :ann2 a ro:Annotation, ao:GraphAnnotation ;
-      ao:annotatesResource  &lt;helloworld.t2flow&gt; ;
-      ao:body               &lt;workflowMetadata.ttl&gt; ;
+      <b>ao:annotatesResource  &lt;helloworld.t2flow&gt; ;
+      ao:body               &lt;workflowMetadata.ttl&gt; ;</b>
       dct:creator           _:stian ;
       dct:createdAt         "2011-07-14T15:31:14Z"^^xsd:dateTime .
     
@@ -331,16 +331,16 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 # http://www.example.com/ro1/manifest
 # ...
 <> ore:aggregates :ann3 ;
-    ore:aggregates    &lt;helloworld.t2flow&gt;, &lt;whyThisWorkflow.ttl&gt;, :ann3  ;
+    ore:aggregates    &lt;helloworld.t2flow&gt;, &lt;whyThisWorkflow.ttl&gt;, <b>:ann3</b>  ;
     ore:isDescribedBy &lt;manifest&gt; .
     
 :workflowProxy a ore:Proxy ;
-               ore:proxyFor &lt;helloworld.t2flow&gt; ;
+            ore:proxyFor &lt;helloworld.t2flow&gt; ;
             ore:proxyIn <> .
     
 :ann3 a ro:Annotation, ao:GraphAnnotation ;
-      ao:annotatesResource  :workflowProxy ;
-      ao:body               &lt;whyThisWorkflow.ttl&gt; ;
+      <b>ao:annotatesResource  :workflowProxy ;
+      ao:body               &lt;whyThisWorkflow.ttl&gt; ;</b>
       dct:creator           _:stian ;
       dct:createdAt         "2011-07-14T16:21:14Z"^^xsd:dateTime .
 #
@@ -394,17 +394,17 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 <p>During the evolution of an RO it can have several versions that refine the previous ones and may be on different states, being alive, archived, published, or etc. This information about the versioning of ROs and their evolution is currently being captured in a separate <a href="http://www.wf4ever-project.org/wiki/display/docs/RO+evolution">roevo ontology</a>.</p>
 
 </section><!-- prov-ro --><section id="prov-wf"><h4>Provenance of a workflow</h4>
-<p>Workflows are one of the most important items in an RO aggregation. As happened with ROs, workflows can evolve, be updated and reused in different ROs. In the RO model, this kind of provenance is captured by annotations, as shown in Section @@TODO. In particular, we could extend the example shown in the aforementiones section to provide additional provenance metadata about the workflow &lt;helloworld.t2flow&gt;:</p>
+<p>Workflows are one of the most important items in an RO aggregation. As happened with ROs, workflows can evolve, be updated and reused in different ROs. In the RO model, this kind of provenance is captured by annotations, as shown in Section @@TODO. In particular, we could extend the example shown in the aforementioned section to provide additional provenance metadata about the workflow &lt;helloworld.t2flow&gt; (the new triples have been highlighted in the example):</p>
 
 <div id="prov-wf">
 <pre class="code-java">
 # http://www.example.com/ro1/workflowMetadata.ttl>
 &lt;helloworld.t2flow&gt; a wfdesc:Workflow ;
      dct:description "Workflow for sequence analysis"@en ;
-     dct:created "someDateGoesHere"^^xsd:dateTime ;
+     <b>dct:created "someDateGoesHere"^^xsd:dateTime ;
      dct:creator  _:stian ;
      dct:version   "2";
-     dct:replaces &lt;helloworld0.1.t2flow&gt; .
+     dct:replaces &lt;helloworld0.1.t2flow&gt; .</b>
 </pre></div>     
 
 <p>Additional provenance-related vocabularies can also be used by users, such the <a href="http://purl.org/swan/1.2/pav/">PAV vocabulary</a>, or the ongoing standard PROV Ontology from the <a href="www.w3.org/2011/prov/">W3C Provenance Working Group</a>.</p>    
@@ -444,7 +444,7 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
                 rdf:type                    wfprov:ProcessRun ;
                 wfprov:usedInput            &lt;input&gt;;
                 wfprov:wasPartOfWorkflowRun &lt;workflowrun-workflow&gt; ;
-                wfprov:describedByProcess  &lt;templProcess&gt;.
+                <b>wfprov:describedByProcess  &lt;templProcess&gt;.</b>
                 
 &lt;templProcess&gt; a wfdesc:Process;
                   wfdesc:hasInput &lt;i1&gt;;
@@ -460,19 +460,19 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 
 &lt;output&gt;  rdf:type wfprov:Artifact;
              wfprov:wasOutputFrom  &lt;processrun-workflow&gt;;
-             wfdesc:describedByParameter &lt;o1&gt;.
+             <b>wfdesc:describedByParameter &lt;o1&gt;.</b>
              
 &lt;input&gt; rdf:type wfprov:Artifact, wf4ever:Dataset;
-            wfdesc:describedByParameter &lt;i1&gt;.
+            <b>wfdesc:describedByParameter &lt;i1&gt;.</b>
             
-&lt;i1&gt; a wfdesc:Parameter, wfdesc:Input;
+<b>&lt;i1&gt; a wfdesc:Parameter, wfdesc:Input;
        wdesc:hasArtifact &lt;templArtifactI&gt;.
        
 &lt;o1&gt; a wfdesc:Parameter, wfdesc:Output.
        wdesc:hasArtifact &lt;templArtifactO&gt;.
        
 &lt;templArtifactI&gt; a wfdesc:Artifact.
-&lt;templArtifactO&gt; a wfdesc:Artifact.
+&lt;templArtifactO&gt; a wfdesc:Artifact.<b>
 </pre>
 </div>
 </section><!-- wfdesc--></section><!-- examples-->
