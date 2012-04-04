@@ -67,10 +67,8 @@ var respecConfig = {
           // editors, add as many as you like
           // only "name" is required
            editors:  [
-              { name: "TODO", url: "",
-                company: "TODO" },
-          //    { name: "Sean Bechhofer", url: "http://www.cs.manchester.ac.uk/~seanb/",
-          //      company: "University of Manchester" },
+              { name: "Jun Zhao", url: "http://users.ox.ac.uk/~zool0770",
+                company: "University of Oxford" }
           ],
  
           // authors, add as many as you like. 
@@ -368,7 +366,7 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 </pre>
 </div>
 
-<p><em>Note: It would be valid, but not required, to also include :ann3 ao:annotatesResource <workflow.t2flow> as the annotation body here is still "somewhat about" <workflow.t2flow>, even though that URI does not appear directly within the graph. </em></p>
+<p><em>Note: It would be valid, but not required, to also include :ann3 ao:annotatesResource &lt;helloworld.t2flow&gt; in the manifest, because the annotation body here is still "somewhat about" &lt;helloworld.t2flow&gt;, even though that URI does not appear directly within the graph. </em></p>
 
 </section><!-- ann-wf --><section id="ann-other"><h4>Annotate other types of components of an RO</h4>
 <p>Relationships between the resources that constitute an RO are encoded using annotations, by having an <tt>ro:Annotation</tt> with multiple <tt>ao:annotatesResource</tt> and relate them within a single annotation body. The wfprov ontology for instance will allow you to describe that a particular artifact was the output of a workflow run, which used a particular artifact as input.</p>
@@ -414,7 +412,7 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 # http://www.example.com/ro1/workflowMetadata.ttl>
 &lt;helloworld.t2flow&gt; a wfdesc:Workflow ;
      dct:description "Workflow for sequence analysis"@en ;
-     <b>dct:created "someDateGoesHere"^^xsd:dateTime ;
+     <b>dct:created "2011-12-02T15:01:10Z"^^xsd:dateTime ;
      dct:creator  _:stian ;
      dct:version   "2";
      dct:replaces &lt;helloworld0.1.t2flow&gt; .</b>
