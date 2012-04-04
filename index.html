@@ -82,9 +82,9 @@ var respecConfig = {
                 company: "University of Manchester" },
           //    { name: "Graham Klyne",
           //      company: "University of Oxford" },
-              { name: "Daniel Garijo", url: "http://mayor2.dia.fi.upm.es/oeg-upm/index.php/es/phdstudents/28-dgarijo",
+              { name: "Daniel Garijo", url: "http://www.oeg-upm.net/index.php/es/phdstudents/28-dgarijo",
                 company: "UPM" },
-              { name: "Oscar Corcho", url: "http://mayor2.dia.fi.upm.es/oeg-upm/index.php/es/teachers/11-ocorcho",
+              { name: "Oscar Corcho", url: "http://www.oeg-upm.net/index.php/es/teachers/11-ocorcho",
                 company: "UPM" },
               { name: "Esteban Garc&#237;a Cuesta",
                 company: "iSOCO" },
@@ -111,7 +111,7 @@ var respecConfig = {
 
 <section id="abstract">
 <p>
-This document is to provide an accessible  introduction to the Wf4Ever RO Model so that readers can understand &quot;what&quot; the RO Model provides and &quot;how&quot; the RO Ontologies and Vocabularies can be used to describe an aggregation object in a structured format.
+This document is to provide an accessible  introduction to the Wf4Ever RO Model so that readers can understand &quot;what&quot; the RO Model provides and &quot;how&quot; the RO Ontologies and Vocabularies can be used to describe an aggregation object that represents some scientific experiment in a structured format.
 </p>
 </section><!-- abstract -->
 
@@ -120,17 +120,17 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 <p>Research Objects are semantically rich aggregations of resources that bring together data, methods and people in scientific investigations [[BECHHOFER11]]. Their goal is to create a class of artifacts that can encapsulate digital knowledge and provide a mechanism for sharing and discovering assets of reusable research and scientific knowledge. 
 </p>
 
-<p>In the Wf4Ever project the focus is on those Research Objets whose methods are implemented as scientific workflows. A (workflow-centric) research object (RO) is an artifact that bundles one or several workflows, the provenance of the results obtained by their enactment, other digital objects that are relevant for the experiment (papers, datasets, etc.), and annotations that semantically describe all these objects. A model that can be used to describe workflow-centric research objects is hence proposed in Wf4Ever [[RO-MODEL]]. This model is implemented as a suite of lightweight ontologies or vocabularies, building upon existing work from related communities.</p>
+<p>In the <a href="http://www.wf4ever-project.eu/">Wf4Ever</a> project the focus is on those Research Objets whose methods are implemented as scientific workflows. A (workflow-centric) research object (RO) is an artifact that bundles one or several workflows, the provenance of the results obtained by their enactment, other digital objects that are relevant for the experiment (papers, datasets, etc.), and annotations that semantically describe all these objects. A model that can be used to describe workflow-centric research objects is proposed in [[RO-MODEL]]. This model is implemented as a suite of lightweight ontologies or vocabularies, building upon existing work from related communities.</p>
 
 <p>This primer document aims at easing the adoption of the RO model by developers and techy-savvy experimental data publishers by providing:</p>
 <ul>
 <li>An intuitive explanation of the different pieces of the RO model.
 </li>
-<li>Worked examples that can be followed to understand what an RO is and how its vocabularies can be used to unambiguously descibe a workflow-centric RO.
+<li>Worked examples that can be followed to understand what an RO is and how its vocabularies can be used to unambiguously describe a workflow-centric RO.
 </li>
 </ul>
 
-<p>The scope of this document is mainly that of developers interested in understanding how to use ontologies/vocabularies to describe research objects  in order to build tool support for their management; and experimental data publishers with sufficient knowledge about Semantic Web technologies to publish their research resources as an aggregation object and describe them in a machine-understandable, structured format, using the Resource Description Framework (RDF). In  this primer document the RDF Turtle syntax is used throughout. The normative specification of the research object ontologies and vocabularies can be found in [[RO-MODEL]].</p>
+<p>The scope of this document is mainly that of developers interested in understanding how to use ontologies/vocabularies to describe research objects in order to build tool support for their management; and experimental data publishers with sufficient knowledge about Semantic Web technologies to publish details of their scientific experiments as aggregation objects and describe them in a machine-understandable, structured format, using the Resource Description Framework (RDF). In  this primer document the RDF Turtle syntax is used throughout. The normative specification of the research object ontologies and vocabularies can be found in [[RO-MODEL]].</p>
 
 </section><!-- introduction -->
 
@@ -138,18 +138,18 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 
 <p>This section provides an overview of the RO Model. It does not cover all the details of the model. The RO Model Specification provides precise definitions to be used.</p>
 
-<p>Generally speaking the Wf4Ever RO model can describe the following three aspects of information:</p>
+<p>Generally speaking the Wf4Ever RO model [[RO-MODEL]] can describe the following three aspects of information:</p>
 <ul>
-<li>Basic aggregation structure of an RO</li>
-<li>Workflow Centric Research Objects</li>
-<li>Annotations to an RO and its components</li>
+<li>Basic aggregation structure of an RO.</li>
+<li>Workflow-centric Research Objects.</li>
+<li>Annotations to an RO and its components.</li>
 </ul>
 
 <section id="sec:basic"><h3>Describe basic aggregation structure of an RO</h3>
 
 <p>A Research Object is simply an aggregation of resources and annotations about them. The figure below provides an overview of the Wf4Ever RO Model, which includes the following constructs:</p>
 <ul>
-<li><b>ResearchObject</b>, represents aggregation of resources. It acts as an entry point to the research object.</li>
+<li><b>ResearchObject</b>, represents an aggregation of resources. It acts as an entry point to the research object.</li>
 <li><b>Resource</b>, represents a resource that can be aggregated within a research object. As shown in the figure below, Resource can be a Dataset, Paper, Software or Annotation. Typically, a ResearchObject aggregates multiple Resources.</li>
 <li><b>Annotation</b>, used for describing research objects, their aggregated resources, as well as the relationship between resources. </li>
 </ul>
@@ -162,9 +162,21 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 
 <section id="sec:wf"><h3>Describe workflow Centric Research Objects</h3>
 
-<p>A special class of research object that is the primary interest of our specification are workflow-centric research objects, which refer to research objects that aggregate workflows, or more specifically workflow templates. A workflow template is a network in which the nodes are  processes and the edges represent data links that connect the output of a  given process to the input of another process, specifying that the  artifacts produced by the former are used to feed the latter. A process is used to describe a class of actions that when enacted give rise to process runs. Processes specify the software component (e.g., web service) responsible for undertaking those actions.</p>
+<p>A special class of research object that is the primary interest of our specification are workflow-centric research objects, which refer to research objects that aggregate workflows, or more specifically workflow templates.</p> 
 
-<p>A workflow is often executed following a template which describes each step involved in the whole execution. Templates can be  designed by scientists (users) with the purpose of being able to  execute the same workflow many times with different inputs for their  tests, as "live-tutorials" of how some data infrastructure can be more efficiently used, etc. There are two types of templates: abstract workflow templates have some of the steps of the workflow not bound to a specific tool, while concrete workflow templates  have all the steps specified. In the RO model, we are able to describe  these templates plus their relationships with the executions with the  <a href="http://purl.org/wf4ever/wfdesc#">wfdesc vocabulary</a>.</p>
+<ul>
+<li>A <b>workflow template</b> is a network in which the nodes are  processes and the edges represent data links that connect the output of a  given process to the input of another process, specifying that the  artifacts produced by the former are used to feed the latter.</li>
+<li>A <b>process</b> is used to describe a class of actions that when enacted give rise to process runs. Processes specify the software component (e.g., web service) responsible for undertaking those actions.</li>
+</ul>
+
+<p>A workflow is often executed following a template which describes each step involved in the whole execution. Templates can be designed by scientists (users) with the purpose of being able to  execute the same workflow many times with different inputs for their  tests, as "live-tutorials" of how some data infrastructure can be more efficiently used, etc. There are two types of templates: </p>
+<ul>
+<li><b>Abstract workflow templates</b> have some of the steps of the workflow not bound to a specific tool.</li>
+<li><b>Concrete workflow templates</b> have all the steps specified.</li>
+</ul>
+
+<p>In the RO model, we are able to describe  these templates plus their relationships with the executions with the  <a href="http://purl.org/wf4ever/wfdesc#">wfdesc vocabulary</a>.</p>
+
 
 <p>As well as workflow templates, workflow research objects contain information about workflow runs, which are obtained by enacting workflow templates, and provenance of the results obtained from the runs. Examples of describing a workflow research object can be found in Section <a href="#ex-wf">3.2</a>.</p>
 
