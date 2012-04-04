@@ -443,7 +443,7 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 &lt;workflowrun-workflow&gt; 
                 rdf:type        wfprov:WorkflowRun .
 </section><!-- prov-output --></section><!-- prov --><section id="wfdesc"><h3>Workflow description</h3>
-<p>A workflow is often executed following a template which describes each step involved in the whole execution. Templates can be designed by scientists (users) with the purpose of being able to execute the same workflow many times with different inputs for their tests, as "live-tutorials" of how some data infrastructure can be more efficiently used, etc. There are two types of templates: <em>abstract workflow templates</em> have some of the steps of the workflow not bound to a specific tool, while <em>concrete workflow templates</em> have all the steps specified. In the RO model, we are able to describe these templates plus their relationships with the executions with the <a href="http://purl.org/wf4ever/wfdesc#">wfdesc vocabulary</a></p>
+<p>With a focus of describing workflows the Wf4Ever Workflow RO model is also able to describe workflow-specific concepts, such as workflow templates plus their relationships with the executions. This is supported by the <a href="http://purl.org/wf4ever/wfdesc#">wfdesc vocabulary</a></p>
 
 <p>Following the example presented in the previous section, now we want to link the executed process to the correspondant step in the template (&lt;templProcess&gt;), since it may contain additional information about how to proceed in order to reproduce it. In the next example, we highlight the triples added to make such a connection.</p>
 
