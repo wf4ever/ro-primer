@@ -177,14 +177,15 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 
 <p>In the RO model, we are able to describe  these templates plus their relationships with the executions with the  <a href="http://purl.org/wf4ever/wfdesc#">wfdesc vocabulary</a>.</p>
 
+<p><img src="diagrams/WorkflowTemplates.png" imagetext="WorkflowTemplates.png|border=1,width=600" width="600" style="border: 1px solid black"></p>
 
-<p>As well as workflow templates, workflow research objects contain information about workflow runs, which are obtained by enacting workflow templates, and provenance of the results obtained from the runs. Examples of describing a workflow research object can be found in Section <a href="#ex-wf">3.2</a>.</p>
+<p>As well as workflow templates, workflow-centric research objects contain information about workflow runs, which are obtained by enacting workflow templates, and provenance of the results obtained from the runs. Examples of describing a workflow research object can be found in Section <a href="#ex-wf">3.2</a>.</p>
 
 </section><!-- wf -->
 
 <section id="sec:annotation"><h3>Describe Annotations to an RO and its components</h3>
 
-<p>In the RO model the Annotation Ontology is used as a generic vocabulary to allow describing research objects, their resources, and their relationships. Three kinds of elements are used to specify annotations:</p>
+<p>In the RO model the <a href="http://code.google.com/p/annotation-ontology/wiki/v2Main">Annotation Ontology</a> is used as a generic vocabulary to allow describing research objects, their resources, and their relationships. Three kinds of elements are used to specify annotations:</p>
 
 <ul>
 <li><b>Annotation</b>: represents the annotation itself. </li>
@@ -196,17 +197,17 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 
 </section><!-- annotation --></section><!-- overview --><section id="examples"><h3>Example use of RO</h3>
 
-<p>The Wf4Ever RO model is implemented as a suite of three ontologoies, which include:</p>
+<p>The Wf4Ever RO model is implemented as a suite of three ontologies, which include:</p>
 
 <p><b>The ro ontology</b>: which provides basic structure for the description of  aggregated resources and the annotations that are made on those  resources.</p>
 
-<p><b>The  wfdesc ontology</b>: which is vocabulary for the description of workflows.  It is targeted at providing an abstraction that can be mapped to  different particular workflow systems.</p>
+<p><b>The wfdesc ontology</b>: which allows describing workflows.  It is targeted at providing an abstraction that can be mapped to  different particular workflow systems.</p>
 
 <p><b>The wfprov ontology</b>: which provides terms for describing provenance information about actual executions of workflows.</p>
 
 <p>These ontologies were built upon existing vocabularies as much as possible, including <a href="http://www.openarchives.org/ore/1.0/vocabulary">OAI ORE (Object Exchange and Reuse)</a> and the Annotation Ontology [[AO]]. </p>
 
-<p>The following sections show how this suite of RO ontologies can be used to describe a basic workflow-centric RO. A &quot;Hello World&quot; workflow RO is used as the running example to demonstrate how each part of the RO model can be used to describe this RO, its components and annotations to the RO as a whole and to each of its component.</p>
+<p>The following sections show how this suite of RO ontologies can be used to describe a basic workflow-centric RO. A &quot;Hello World&quot; RO is used as the running example to demonstrate how each part of the RO model can be used to describe this RO, its components and annotations to the RO as a whole and to each of its component.</p>
 
 <p>The following namespaces are used in the examples:<p>
 <pre>
@@ -258,9 +259,9 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 </div>
 
 </section><!-- ex-wf --><section id="ex-ann"><h3>Provide Annotations to an RO</h3>
-<p>Structured annotations can be added to research objects, aggregated resources, or components of those resources. Annotations are declared as separate RDF resources, which should independently be aggregated as well. The Wf4Ever RO model uses <a href="http://code.google.com/p/annotation-ontology/wiki/v2Main">Annotation Ontology 2.0</a> for describing the link between these RDF resources (the annotation body) and the resources they annotate (annotated resource), also providing an anchor point for describing who made the annotation and when.</p>
+<p>Structured annotations can be added to research objects, aggregated resources, or components of those resources. Annotations are declared as separate RDF resources, which should independently be aggregated as well. The Wf4Ever RO model uses the <a href="http://code.google.com/p/annotation-ontology/wiki/v2Main">Annotation Ontology 2.0</a> for describing the link between these RDF resources (the annotation body) and the resources they annotate (annotated resource), also providing an anchor point for describing who made the annotation and when.</p>
 
-<p>Multiple annotation bodies (<tt>ao:body</tt>) can annotate the same resource (<tt>ao:annotatesResource</tt>), and a single annotation (<tt>ao:Annotation</tt>) can annotate multiple resources. Each annotation should have a <a href="http://purl.org/dc/terms/creator"><tt>dct:creator</tt></a> and <a href="http://purl.org/dc/terms/createdAt"><tt>dct:createdAt</tt></a> to specify who created the annotation when. Details about how to use the Annotation Ontology can be found in the above link.</p>
+<p>Multiple annotation bodies (<tt>ao:body</tt>) can annotate the same resource (<tt>ao:annotatesResource</tt>), and a single annotation (<tt>ao:Annotation</tt>) can annotate multiple resources. Each annotation should have a <a href="http://purl.org/dc/terms/creator"><tt>dct:creator</tt></a> and <a href="http://purl.org/dc/terms/createdAt"><tt>dct:createdAt</tt></a> to specify who created the annotation and when. Details about how to use the Annotation Ontology can be found in the above link.</p>
 
 <section id="ann-ro"><h4>Annotate an RO as a whole</h4>
 
@@ -299,7 +300,7 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 </pre>
 </div>
 
-<p>Annotations about a workflow should be kept in a separate resource. By separating these annotations in a separate file, they can be aggregated by an RO and provenance of these annotations can also be made, like who created them when. This is an important pattern that should be followed when creating RO annotations. These annotations can also be reused as long as they are universally true outside the context that they were initially created, i.e. the annotations about a workflow remains true no matter in which RO it could be aggregated.</p>
+<p>Annotations about a workflow should be kept in a separate resource. By separating these annotations in a separate file, they can be aggregated by an RO and provenance of these annotations can also be made, like who created them when. This is an important pattern that should be followed when creating RO annotations. These annotations can also be reused as long as they are universally true outside the context that they were initially created, i.e. the annotations about a workflow remain true no matter in which RO it could be aggregated.</p>
 
 
 </section><!-- ann-ro --><section id="ann-wf"><h4>Annotate a workflow</h4>
@@ -334,7 +335,7 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 </pre>
 </div>
 
-<p>This example will both establish that &lt;helloworld.t2flow&gt; actually is typed as a <tt>workflow</tt> (that was asserted by Stian), and give it a general description about the workflow. This information could for instance come from where originally the workflow was retrieved, such as the social workflow sharing web site <a href="http://myexperiment.org">myExperiment</a>, or the workflow definition itself.</p>
+<p>This example will both establish that &lt;helloworld.t2flow&gt; actually is typed as a <tt>workflow</tt> (that was asserted by Stian), and give a general description about the workflow. This information could for instance come from where originally the workflow was retrieved, such as the social workflow sharing web site <a href="http://myexperiment.org">myExperiment</a>, or the workflow definition itself.</p>
 
 <p>A second annotation gives the description of the workflow with respect to this HelloWorld research object - by annotating the workflow proxy instead of &lt;helloworld.t2flow&gt;. In OAI-ORE a <tt>Proxy</tt> allows users to make statements about an aggregated resource in the context of a particular aggegation (such as ro:ResearchObject). By adopting this construct it is possible to say, for instance, why the workflow exists within this research object - this annotation would not necessarily apply to the workflow aggregated in a different research object, although it may be retrieved anyway.</p>
 
@@ -403,7 +404,7 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 <section id="prov-ro"><h4>Provenance of an RO</h4>
 <p>This type of provenance can describe either simple attribution information about an RO or refer to the changes and evolution "suffered" by the RO from its creation to its current state.  Attribution metadata of the RO, such as creator, or date of release, can be captured  through annotations, as shown in Section <a href="#ex-ann">3.3</a>.</p> 
 
-<p>During the evolution of an RO it can have several versions that refine the previous ones and may be on different states, being alive, archived, published, or etc. This information about the versioning of ROs and their evolution is currently being captured in a separate <a href="http://www.wf4ever-project.org/wiki/display/docs/RO+evolution">roevo ontology</a>.</p>
+<p>During the evolution of an RO it can have several versions that refine the previous ones and may be on different states, being alive, archived, published, etc. This information about the versioning of ROs and their evolution is currently being captured in a separate <a href="http://www.wf4ever-project.org/wiki/display/docs/RO+evolution">roevo ontology</a>.</p>
 
 </section><!-- prov-ro --><section id="prov-wf"><h4>Provenance of a workflow</h4>
 <p>Workflows are one of the most important items in an RO aggregation. As happened with ROs, workflows can evolve, be updated and reused in different ROs. In the RO model, this kind of provenance is captured by annotations, as shown in Section <a href="#ex-basic">3.1</a>. In particular, we could extend the example shown in the aforementioned section to provide additional provenance metadata about the workflow &lt;helloworld.t2flow&gt; (the new triples have been highlighted in the example):</p>
