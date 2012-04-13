@@ -19,15 +19,10 @@
 "RO-MODEL":"Wf4Ever RO Model. URL: <a href=\"http://wf4ever.github.com/ro\">http://wf4ever.github.com/ro/</a>",
 "BECHHOFER11":"Sean Bechhofer et. al.<cite>Linked Data is Not Enough for Scientists</cite>, Future Generation Computer Systems, DOI: <a href=\"http://dx.doi.org/10.1016/j.future.2011.08.004\">201110.1016/j.future.2011.08.004</a>",
 
-"FORCE11": "Phil Bourne, Tim Clark et. al. <cite><a href=\"http://force11.org/white_paper\">Improving Future Research Communication and e-Scholarship</a>.</cite> FORCE11 Manifesto. URL: <a href=\"http://force11.org/white_paper\">http://force11.org/white_paper</a>",
-
 "ORE":"<cite><a href=\"http://www.openarchives.org/ore/1.0/toc.html\">Open Archives Initiative Object Reuse and Exchange</a></cite>. <em>ORE Specifications and User Guides.</em> URL: <a href=\"http://www.openarchives.org/ore/1.0/toc.html\">http://www.openarchives.org/ore/1.0/toc.html</a>",
 
-"ORE-RDF":"Carl Lagoze and Herbert van de Sompel <cite><a href=\"http://www.openarchives.org/ore/1.0/rdfxml\">ORE User Guide - Resource Map Implementation in RDF/XML</a></cite>.",
+"AO":"Paolo Ciccarese. <cite><a href=\"http://code.google.com/p/annotation-ontology/\">The Annotation Ontology</a></cite> URL: <a href=\"http://code.google.com/p/annotation-ontology/\">http://code.google.com/p/annotation-ontology</a>"
 
-"AO":"Paolo Ciccarese. <cite><a href=\"http://code.google.com/p/annotation-ontology/\">The Annotation Ontology</a></cite> URL: <a href=\"http://code.google.com/p/annotation-ontology/\">http://code.google.com/p/annotation-ontology</a>",
-
-"HUNTER06":"Jane Hunter <a href=\"http://www.ijdc.net/index.php/ijdc/article/view/8\"><cite>Scientific Publication Packages: A Selective Approach to the Communication and Archival of Scientific Output.</cite></a> International Journal of Digital Curation, Vol. 1, 2006 URL: <a href=\"http://www.ijdc.net/index.php/ijdc/article/view/8\">http://www.ijdc.net/index.php/ijdc/article/view/8</a>"
          }; 
 
 var respecConfig = {
@@ -35,7 +30,7 @@ var respecConfig = {
           specStatus:           "unofficial",
           
           // the specification's short name, as in http://www.w3.org/TR/short-name/
-          shortName:            "ro",
+          shortName:            "ro-primer",
  
           // if your specification has a subtitle that goes below the main
           // formal title, define it here
@@ -43,11 +38,11 @@ var respecConfig = {
 
  
           // if you wish the publication date to be other than today, set this
-          // publishDate:  "2011-10-18",
+          publishDate:  "2012-04-13",
  
           // if the specification's copyright date is a range of years, specify
           // the start date here:
-          copyrightStart: "2010",
+          copyrightStart: "2012",
  
           // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
           // and its maturity status
@@ -118,7 +113,7 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 <p>Research Objects are semantically rich aggregations of resources that bring together data, methods and people in scientific investigations [[BECHHOFER11]]. Their goal is to create a class of artifacts that can encapsulate digital knowledge and provide a mechanism for sharing and discovering assets of reusable research and scientific knowledge. 
 </p>
 
-<p>In the <a href="http://www.wf4ever-project.eu/">Wf4Ever</a> project the focus is on those Research Objets whose methods are implemented as scientific workflows. A (workflow-centric) research object (RO) is an artifact that bundles one or several workflows, the provenance of the results obtained by their enactments, other digital objects that are relevant to the experiment (papers, datasets, etc.), and annotations that semantically describe all these objects. A model that can be used to describe these workflow-centric research objects is proposed in [[RO-MODEL]]. This model is implemented as a suite of lightweight ontologies or vocabularies, building upon existing work from related communities.</p>
+<p>In the <a href="http://www.wf4ever-project.eu/">EU Wf4Ever</a> project the focus is on those Research Objets whose methods are implemented as scientific workflows. A (workflow-centric) research object (RO) is an artifact that bundles one or several workflows, the provenance of the results obtained by their enactments, other digital objects that are relevant to the experiment (papers, datasets, etc.), and annotations that semantically describe all these objects. A model that can be used to describe these workflow-centric research objects is proposed in [[RO-MODEL]]. This model is implemented as a suite of lightweight ontologies or vocabularies, building upon existing work from related communities.</p>
 
 <p>This primer document aims at easing the adoption of the RO model by providing:</p>
 <ul>
@@ -203,7 +198,7 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 
 <p><b>The wfprov ontology</b>: which provides terms for describing provenance information about actual executions of workflows.</p>
 
-<p>These ontologies were built upon existing vocabularies as much as possible, including <a href="http://www.openarchives.org/ore/1.0/vocabulary">OAI ORE (Object Exchange and Reuse)</a> and the Annotation Ontology [[AO]]. </p>
+<p>These ontologies were built upon existing vocabularies as much as possible, including OAI ORE (Object Exchange and Reuse) [[ORE]] and the Annotation Ontology [[AO]]. </p>
 
 <p>The following sections show how this suite of RO ontologies can be used to describe a basic workflow-centric RO. A &quot;Hello World&quot; RO is used as the running example to demonstrate how each part of the RO model can be used to describe this RO, its components and annotations to the RO as a whole and to each of its component.</p>
 
@@ -294,7 +289,7 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 </pre>
 </div>
 
-<p>Annotations about a workflow should be kept in a separate resource. By separating these annotations in a separate file, they can be aggregated by an RO and provenance of these annotations can also be made, like who created them when. This is an important pattern that should be followed when creating RO annotations. These annotations can also be reused as long as they are universally true outside the context that they were initially created, i.e. the annotations about a workflow remain true no matter in which RO it could be aggregated.</p>
+<p>Annotations about a workflow should be kept in a separate resource. By separating these annotations in a separate resource, they can be aggregated by an RO and provenance of these annotations can also be made, like who created them when. This is an important pattern that should be followed when creating RO annotations. These annotations can also be reused as long as they are universally true outside the context that they were initially created, i.e. the annotations about a workflow remain true no matter in which RO it could be aggregated.</p>
 
 
 </section><!-- ann-ro --><section id="ann-wf"><h4>Annotate a Workflow</h4>
@@ -365,7 +360,7 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
 <p><em>Note: It would be valid, but not required, to also include :ann3 ao:annotatesResource &lt;helloworld.t2flow&gt; in the manifest, because the annotation body here is still "somewhat about" &lt;helloworld.t2flow&gt;, even though that URI does not appear directly within the graph. </em></p>
 
 </section><!-- ann-wf --><section id="ann-other"><h4>Annotate Other Types of Components of an RO</h4>
-<p>Relationships between the resources that constitute an RO are encoded using annotations, by having an <tt>ro:Annotation</tt> with multiple <tt>ao:annotatesResource</tt> and relate them within a single annotation body. The wfprov ontology for instance will allow you to describe that a particular artifact was the output of a workflow run. It can also be used to link the output with the input of the run, although no inputs were used in running the simple "Hello World" worklfow.</p>
+<p>Relationships between the resources that constitute an RO are encoded using annotations, by having an <tt>ro:Annotation</tt> with multiple <tt>ao:annotatesResource</tt> and relate them within a single annotation body. The wfprov ontology for instance will allow you to describe that a particular artifact was the output of a workflow run. It can also be used to link the output with the input of the run, although no inputs were used in the simple running example, the "Hello World" worklfow.</p>
 
 <div id="anno-other">
 <pre class="code-java">
@@ -376,16 +371,16 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
     ore:aggregates &lt;output&gt;, &lt;run_helloworld&gt;, :ann2 .
       
 :ann2    a ao:GraphAnnotation ;
-         ao:annotatesResource &lt;output&gt; ;
-         ao:annotatesResource &lt;run_helloworld&gt; ;
+         <b>ao:annotatesResource &lt;output&gt; ; ## link to a resource
+         ao:annotatesResource &lt;run_helloworld&gt; ; ## with another resource</b>
          ao:body              &lt;output_annotations.ttl&gt; .
         
 ### annotation to an output data
 ### &lt;output_annotations.ttl> contains:
 
-&lt;output> dct:title             "Output from an example workflow"@en;
+<b>&lt;output&gt;</b> dct:title             "Output from an example workflow"@en;
          foaf:topic            go:ProteinSequence ;
-         wfprov:wasOutputFrom  &lt;run_helloworld&gt; .
+         wfprov:wasOutputFrom  <b>&lt;run_helloworld&gt;</b> .
                     
 </pre>
 </div>                    
@@ -496,9 +491,9 @@ This document is to provide an accessible  introduction to the Wf4Ever RO Model 
     ] .
 </pre>
 </div>
-
-
 </div>
-</section><!-- wfdesc--></section><!-- examples-->
+</section><!-- wfdesc--></section><!-- examples--><section id="ack"><h3>Acknowledgement</h3>
+We thank all members of the <a href="http://www.wf4ever-project.org">EU Wf4Ever project</a> for their feedback throughout the development of the RO Ontology and this primer document. The EU Wf4Ever project (270129) is funded under EU FP7 Digital Libraries and Digital Preservation (ICT-2009.4.1).
+</section><!--ack>
 </body>
 </html>
